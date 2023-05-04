@@ -4,9 +4,7 @@ import styles from "./Menu.module.scss";
 const cx = classNames.bind(styles);
 
 function Menu() {
-    return ( <div className={cx("wrapper")}>
-        123
-    </div>);
+  return <div className={cx("wrapper")}></div>;
 }
 
 export default Menu;
