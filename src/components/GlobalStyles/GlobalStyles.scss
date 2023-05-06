@@ -1,32 +1,35 @@
-@import 'normalize.css';
+@import "normalize.css";
 
 :root {
-    --primary: #fcb000;
-    --black: #000;
-    --white: #fff;
-    --text-color: #0a0a0a;
+  --primary: #fcb000;
+  --black: #000;
+  --white: #fff;
+  --text-color: #0a0a0a;
 
-
-    // default-font-family
-    --font-family:  "Quicksand", sans-serif;
+  // default-font-family
+  --font-family: "Quicksand", sans-serif;
 }
 
-
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html {
-    font-size: 62.5%;
+  font-size: 62.5%;
 }
 
 body {
-    font-family: var(--font-family);
-    font-size: 1.6rem;
-    line-height: 1.5;
-    text-rendering: optimizeLegibility;
-    color: var(--text-color);
-    overflow-y: overlay;
+  font-family: var(--font-family);
+  font-size: 1.6rem;
+  line-height: 1.5;
+  text-rendering: optimizeLegibility;
+  color: var(--text-color);
+  overflow-y: overlay;
+}
+
+a {
+  color: var(--text-color);
+  text-decoration: none;
 }

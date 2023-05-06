@@ -1,4 +1,39 @@
 .wrapper {
+  display: flex;
+  justify-content: center;
   height: 40px;
   background-color: var(--primary);
+}
+
+.link {
+  padding: 10px 0;
+  margin-right: 16px;
+  font-size: 12px;
+  font-weight: 700;
+
+  &:hover {
+    position: relative;
+    border-top: 4px solid #0c0c0c;
+    transition: all 0.1s ease;
+  }
+}
+
+.item {
+  display: flex;
+  flex-wrap: wrap;
+  width: 320px;
+  font-size: 12px;
+  font-weight: 400;
+  padding: 20px 0;
+}
+
+.item-info {
+  min-width: 140px;
+  padding: 10px 5px 10px 10px;
+  margin: 0 10px;
+  
+  &:hover{
+    border-radius: 10px;
+    background-color: var(--primary);
+  }
 }

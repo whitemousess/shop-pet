@@ -1,8 +1,6 @@
 import config from "~/config";
 
 import Home from "~/pages/Home";
-import BuyCats from "~/pages/BuyCats";
-import BuyDogs from "~/pages/BuyDogs";
 import Cats from "~/pages/Cats";
 import Dogs from "~/pages/Dogs";
 import ItemCats from "~/pages/ItemCats";
@@ -11,13 +9,11 @@ import News from "~/pages/News";
 
 const publicRoutes = [
     {path: config.routes.home, component: Home},
-    {path: config.routes.home, component: BuyCats},
-    {path: config.routes.home, component: BuyDogs},
-    {path: config.routes.home, component: Cats},
-    {path: config.routes.home, component: Dogs},
-    {path: config.routes.home, component: ItemCats},
-    {path: config.routes.home, component: ItemDogs},
-    {path: config.routes.home, component: News},
+    {path: config.routes.cats, component: Cats},
+    {path: config.routes.dogs, component: Dogs},
+    {path: config.routes.itemcats, component: ItemCats},
+    {path: config.routes.itemdogs, component: ItemDogs},
+    {path: config.routes.news, component: News},
 ];
 
 const privateRoutes = [];
