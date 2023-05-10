@@ -1,0 +1,36 @@
+.wrapper {
+    padding-top: 30px;
+  }
+  
+  .title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 12px 0;
+    font-size: 26px;
+    font-weight: 700;
+    list-style: 34px;
+  
+    .title-dog {
+      margin: 0 15px;
+    }
+  
+    span {
+      width: 60px;
+      background-color: var(--primary);
+      height: 3px;
+    }
+  }
+  
+  .description {
+    width: 100%;
+    text-align: center;
+  margin-bottom: 20px;
+  
+    span {
+      display: inline-block;
+      width: 48%;
+      color: #0000ffb7;
+    }
+  }
+  
