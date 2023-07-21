@@ -1,12 +1,14 @@
-
-
 const routes = {
   home: "/",
   cats: "/cats",
   dogs: "/dogs",
-  itemcats: "/itemcats",
-  itemdogs: "/itemdogs",
+  itemCats: "/itemcats",
+  itemDogs: "/itemdogs",
   news: "/news",
+  login: "/login",
+  register: "/register",
+  addPet: "/manager/add",
+  manager: "/manager/pets",
 };
 
 export default routes;

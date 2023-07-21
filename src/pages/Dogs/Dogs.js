@@ -1,10 +1,24 @@
+import { useState, useEffect } from "react";
 import classNames from "classnames/bind";
 import styles from "./Dogs.module.scss";
-import ItemsPet from "~/components/ItemsPet";
+import ItemsPet from "./ItemsPet";
+import * as petSevice from "~/services/petService";
 
 const cx = classNames.bind(styles);
 
 function Dogs() {
+  const [dog, setDog] = useState([])
+
+  useEffect(() => {
+    // call Api User
+    petSevice
+    .getPet({ page: 1, perPage: 5 ,type: "dog"})
+    .then((data) => {
+      setDog((prePet) => [...prePet, ...data]);
+    })
+    .catch((error) => console.log(error));
+}, []);
+
   return (
     <div className={cx("wrapper")}>
       <div className={cx("title")}>
@@ -18,7 +32,7 @@ function Dogs() {
           hội những người nuôi chó giống tại Việt Nam (VKA)
         </span>
       </div>
-      <ItemsPet />
+      <ItemsPet data={dog}/>
     </div>
   );
 }

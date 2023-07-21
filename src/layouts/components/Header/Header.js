@@ -3,12 +3,17 @@ import { Link } from "react-router-dom";
 
 import config from "~/config";
 import styles from "./Header.module.scss";
-import Menu from '~/layouts/components/Header/Menu'
+import Menu from "~/layouts/components/Header/Menu";
 import Search from "~/layouts/components/Search";
+import Button from "~/components/Button/Button";
+import routes from "~/config/routes";
 
 const cx = classNames.bind(styles);
 
 function Header() {
+
+  const user = false;
+
   return (
     <div className={cx("wrapper")}>
       <div className={cx("header")}>
@@ -52,6 +57,10 @@ function Header() {
             />
             <p>KM</p>
           </span>
+        </div>
+        <div className={cx("auth")}>
+          <Link to={config.routes.login} className={cx("login")}><Button yellow >Login</Button></Link>
+          <Link to={config.routes.register}><Button blue >Register</Button></Link>
         </div>
       </div>
       <Menu />

@@ -5,13 +5,12 @@ import PetInfo from "./PetInfo";
 
 const cx = classNames.bind(styles);
 
-function Items() {
+function Items({data = []}) {
   return (
     <div className={cx("wrapper")}>
-      <PetInfo />
-      <PetInfo />
-      <PetInfo />
-      <PetInfo />
+      {data.map((cat) => (
+        <PetInfo key={cat._id} data={cat}/>
+      ))}
     </div>
   );
 }

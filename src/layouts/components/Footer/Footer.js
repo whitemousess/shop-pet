@@ -34,15 +34,13 @@ function Footer() {
               <p>
                 <strong>Cửa hàng : </strong>
                 <Link
-                  to="https://goo.gl/maps/Vk63zdqqRxcmfuz3A"
+                  to="https://goo.gl/maps/evgYAAJZcJzs8F1f7"
                   className={cx("address-des")}
                 >
-                  606/121 đường 3 tháng 2, phường 14, quận 10, thành phố Hồ Chí
-                  Minh.
+                  Hà nội
                 </Link>
-                <strong>(Hẻm Xe Hơi lớn đỗ cửa). Pet Farm Đà Lạt:</strong> Km 2,
-                đường Quảng Thắng, xã Xuân Thọ, Tp. Đà Lạt, tỉnh Lâm Đồng. Hotline:
-                0965.086.079 Website: https://dogily.vn Email: dogily.vn@gmail.com
+                <strong> (Hẻm Xe Hơi lớn đỗ cửa).</strong> Hotline:
+                <Link to="tel:+84328709485">0999.999.999</Link> Website: <Link to="https://example.vn">https://example.vn</Link> Email: <Link to="mailto: example@gmail.com">/example@gmail.com</Link>
               </p>
             </div>
           </div>
@@ -51,37 +49,35 @@ function Footer() {
       <div className={cx("content")}>
         <strong className={cx("title")}>
           Địa chỉ shop, cửa hàng mua chó mèo cảnh, thú cưng uy tín ở đâu tại
-          Tphcm, Hà nội?
+           Hà nội?
         </strong>
         <ul>
           <li>
-            <Link to="https://goo.gl/maps/k2PXYBPprvcj732V8">
-              606/121 đường 3 tháng 2, phường 14, quận 10, thành phố Hồ Chí
-              Minh.
+            <Link to="https://goo.gl/maps/evgYAAJZcJzs8F1f7">
+            Hà nội
             </Link>{" "}
             <strong>(Hẻm Xe Hơi lớn đỗ cửa).</strong>
           </li>
           <li>
-            <Link to="https://goo.gl/maps/53yPBdN397NghnELA">
-              171 Quang Trung, Phường 10, quận Gò Vấp, thành phố Hồ Chí Minh
+            <Link to="https://goo.gl/maps/evgYAAJZcJzs8F1f7">
+            Hà nội
             </Link>
           </li>
           <li>
-            <Link to="https://goo.gl/maps/gqi3eayHsoZrZQTWA">
-              Số 95, đường Nghi Tàm, phường Yên Phụ, quận Tây Hồ, Tp Hà Nội.
+            <Link to="https://goo.gl/maps/evgYAAJZcJzs8F1f7">
+            Hà nội
             </Link>
           </li>
           <li>
             <strong>Tiệm cà phê chó mèo thú cưng MeowGo Cafe Đà Lạt:</strong>
-            <Link to="https://goo.gl/maps/K8bSmNaxkDASU34n6">
-              {" "}
-              70/1 Pasteur, phường 4, thành phố Đà Lạt, tỉnh Lâm Đồng.
+            <Link to="https://goo.gl/maps/evgYAAJZcJzs8F1f7">
+              Hà nội
             </Link>
           </li>
           <li>
-            <strong>Pet Farm Đà Lạt:</strong>{" "}
-            <Link to="https://goo.gl/maps/RjDCnVRFQpEoRA3b9">
-              Km 2, đường Quảng Thắng, xã Xuân Thọ, Tp. Đà Lạt, tỉnh Lâm Đồng.
+            <strong>Pet Farm Hà nội:</strong>{" "}
+            <Link to="https://goo.gl/maps/evgYAAJZcJzs8F1f7">
+              Hà nội
             </Link>
           </li>
         </ul>
@@ -91,7 +87,7 @@ function Footer() {
         <strong className={cx("title")}>Thông báo</strong>
         <p>
           Tuân thủ Nghị định số 185/2013/NĐ-CP của Chính phủ và luật quảng cáo
-          số 16/2012/ QH13 về kinh doanh bán hàng qua mạng, Dogily.vn không mua
+          số 16/2012/ QH13 về kinh doanh bán hàng qua mạng,  không mua
           bán sản phẩm online trực tuyến qua mạng internet. Website chỉ là kênh
           thông tin tư vấn, tham khảo về cách nuôi, chăm sóc, giá bán & nơi mua
           chó mèo cảnh, thú cưng ở đâu uy tín? Bạn đọc có nhu cầu xin liên hệ
@@ -102,7 +98,7 @@ function Footer() {
       </div>
 
       <div className={cx("footer")}>
-        <p className={cx("copy-right")}><strong>Bản quyền 2023 © Dogily PetShop</strong></p>
+        <p className={cx("copy-right")}><strong>Bản quyền 2023</strong></p>
       </div>
     </div>
   );

@@ -1,10 +1,24 @@
+import { useState, useEffect } from "react";
+import * as petSevice from "~/services/petService";
 import classNames from "classnames/bind";
 import styles from "./Cats.module.scss";
-import ItemsPet from "~/components/ItemsPet";
+import ItemsPet from "./ItemsPet";
 
 const cx = classNames.bind(styles);
 
 function Dogs() {
+  const [cat, setCat] = useState([])
+
+  useEffect(() => {
+    // call Api User
+    petSevice
+    .getPet({ page: 1, perPage: 5 ,type: "cat"})
+    .then((data) => {
+      setCat((prePet) => [...prePet, ...data]);
+    })
+    .catch((error) => console.log(error));
+}, []);
+
   return (
     <div className={cx("wrapper")}>
       <div className={cx("title")}>
@@ -18,7 +32,7 @@ function Dogs() {
           Cattery thành viên Hiệp hội mèo thế giới TICA.
         </span>
       </div>
-      <ItemsPet />
+      <ItemsPet data={cat}/>
     </div>
   );
 }
