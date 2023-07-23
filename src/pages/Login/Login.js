@@ -1,3 +1,4 @@
+import axios from "axios";
 import classNames from "classnames/bind";
 import { useState , useEffect } from "react";
 
@@ -5,30 +6,55 @@ import styles from "./Login.module.scss";
 import Button from "~/components/Button/Button";
 import { EyePassword } from "~/components/Icons";
 import { Link } from "react-router-dom";
-import * as petSevice from "~/services/petService";
 import config from "~/config";
 
 const cx = classNames.bind(styles);
 
 function Login() {
   const [passwordShown, setPasswordShown] = useState(false);
+  const [username, setUsername] = useState("")
+  const [password, setPassword] = useState("")
+
+  useEffect(() => {
+    const token = window.localStorage.token
+    if (token) {
+        window.location = '/'
+    }
+  }, [])
 
   const togglePassword = () => {
     setPasswordShown(!passwordShown);
   };
 
-  useEffect(() => {
-    // call Api User
-    petSevice
-    .postPet()
-    .then((data) => {
-      console.log(data)
-    })
-    .catch((error) => console.log(error));
-}, []);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios
+      .post(
+        `http://localhost:1407/api/account/login`,
+        {
+          username,
+          password,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then((res) => {
+        if (res?.data?.token) {
+          window.localStorage.setItem("token", res.data.token);
+          window.location = "/";
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
 
   return (
-    <form method="post" className={cx("wrapper")}>
+    <div className={cx("wrapper")}>
       <div className={cx("container")}>
         <header className={cx("header")}>Đăng nhập</header>
         <p className={cx("title")}>Tài khoản</p>
@@ -38,6 +64,8 @@ function Login() {
             className={cx("input-login")}
             placeholder="Tài khoản"
             name="username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
             required
           />
         </div>
@@ -49,20 +77,22 @@ function Login() {
             id="Password"
             placeholder="Password"
             name="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             required
           />
           <button className={cx("icon-show")} onClick={togglePassword}>
             <EyePassword />
           </button>
         </div>
-        <Button blue className={cx("btn-login")}>
+        <Button blue className={cx("btn-login")} onClick={handleSubmit}>
           Đăng nhập
         </Button>
         <span className={cx("btn-register")}>
           <Link to={config.routes.register} >Chưa có tài khoản?</Link>
         </span>
       </div>
-    </form>
+    </div>
   );
 }
 

@@ -76,7 +76,6 @@ function Menu() {
         interactive
         delay={[0, 0]}
         offset={[-20, 0]}
-        render={renderMenuItem}
         placement={"bottom"}
       >
         <Link className={cx("link")} to={config.routes.news}>

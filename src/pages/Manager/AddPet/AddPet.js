@@ -9,24 +9,23 @@ const cx = classNames.bind(styles);
 function AddPet() {
   const [pet, setPet] = useState("");
 
+  useEffect(() => {
+    const token = window.localStorage.token;
+    if (!token) {
+      window.location = "/login";
+      return;
+    }
+  }, []);
+
   function submit(e) {
     e.preventDefault();
-    const headers = {
-      'Authorization': "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDlkNDE0OTdmZGFkYWJhODc2MmExZjIiLCJpYXQiOjE2ODkxNjY3MzR9.NNDhiTsAO9-rL7AtLW1u1IGCaZEFi5eXeO_Yhai5rvs",
-      "Content-Type": "application/json",
-    }
-
     axios
-      .post(
-        `http://localhost:1407/api/pet/add`,
-        {
-          name: pet.name,
-          image: pet.image,
-          type: pet.type,
-          description: pet.description,
-        },
-        {headers}
-      )
+      .post(`http://localhost:1407/api/pet/add`, {
+        name: pet.name,
+        image: pet.image,
+        type: pet.type,
+        description: pet.description,
+      })
       .then((response) => {
         window.location = "/manager/pets";
       })

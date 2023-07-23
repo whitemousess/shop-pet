@@ -1,4 +1,5 @@
 const routes = {
+  info: "/:id",
   home: "/",
   cats: "/cats",
   dogs: "/dogs",

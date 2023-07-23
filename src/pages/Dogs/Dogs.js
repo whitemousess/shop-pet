@@ -2,16 +2,15 @@ import { useState, useEffect } from "react";
 import classNames from "classnames/bind";
 import styles from "./Dogs.module.scss";
 import ItemsPet from "./ItemsPet";
-import * as petSevice from "~/services/petService";
+import * as petService from "~/services/petService";
 
 const cx = classNames.bind(styles);
 
 function Dogs() {
   const [dog, setDog] = useState([])
-
   useEffect(() => {
     // call Api User
-    petSevice
+    petService
     .getPet({ page: 1, perPage: 5 ,type: "dog"})
     .then((data) => {
       setDog((prePet) => [...prePet, ...data]);

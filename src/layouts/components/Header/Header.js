@@ -1,18 +1,51 @@
 import classNames from "classnames/bind";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import Tippy from "@tippyjs/react/headless";
 
 import config from "~/config";
 import styles from "./Header.module.scss";
-import Menu from "~/layouts/components/Header/Menu";
+import MenuHeader from "~/layouts/components/Header/Menu";
+import { Wrapper as PopperWrapper } from "~/components/Popper";
 import Search from "~/layouts/components/Search";
 import Button from "~/components/Button/Button";
-import routes from "~/config/routes";
+import * as userService from "~/services/userService";
 
 const cx = classNames.bind(styles);
 
-function Header() {
+function Header({ currentUser }) {
+  const [user, setUser] = useState([]);
 
-  const user = false;
+  function logout() {
+    window.localStorage.clear();
+    window.location.reload();
+  }
+
+  const renderMenuItem = (props) => {
+    return (
+      <div tabIndex="-1" {...props}>
+        <PopperWrapper>
+          <p className={cx("headerMenu")}>{user.username}</p>
+          <Link className={cx("item")} to={config.routes.manager}>
+            Quản lý
+          </Link>
+          <Link className={cx("item")} onClick={logout}>
+            Đăng xuất
+          </Link>
+        </PopperWrapper>
+      </div>
+    );
+  };
+
+  useEffect(() => {
+    // call Api User
+    userService
+      .getUser()
+      .then((data) => {
+        setUser(data);
+      })
+      .catch((error) => console.log(error));
+  }, []);
 
   return (
     <div className={cx("wrapper")}>
@@ -28,42 +61,34 @@ function Header() {
           />
         </Link>
         <Search />
-        <div className={cx("language")}>
-          <span>
-            <img
-              src="//dogily.vn/wp-content/plugins/gtranslate/flags/24/vi.png"
-              alt=""
-            />
-            <p>VI</p>
-          </span>
-          <span>
-            <img
-              src="//dogily.vn/wp-content/plugins/gtranslate/flags/24/en.png"
-              alt=""
-            />
-            <p>EN</p>
-          </span>
-          <span>
-            <img
-              src="//dogily.vn/wp-content/plugins/gtranslate/flags/24/th.png"
-              alt=""
-            />
-            <p>TH</p>
-          </span>
-          <span>
-            <img
-              src="//dogily.vn/wp-content/plugins/gtranslate/flags/24/km.png"
-              alt=""
-            />
-            <p>KM</p>
-          </span>
-        </div>
+
         <div className={cx("auth")}>
-          <Link to={config.routes.login} className={cx("login")}><Button yellow >Login</Button></Link>
-          <Link to={config.routes.register}><Button blue >Register</Button></Link>
+          {currentUser ? (
+            <>
+              <Tippy
+                interactive
+                render={renderMenuItem}
+                hideOnClick={true}
+                trigger= {"click"}
+                placement={"bottom"}
+              >
+                <img className={cx("avatar")} src={user.avatar} alt="avatar" />
+              </Tippy>
+            </>
+          ) : (
+            <>
+              <Link to={config.routes.login} className={cx("login")}>
+                <Button yellow>Login</Button>
+              </Link>
+              <Link to={config.routes.register}>
+                <Button blue>Register</Button>
+              </Link>
+            </>
+          )}
         </div>
       </div>
-      <Menu />
+
+      <MenuHeader />
     </div>
   );
 }

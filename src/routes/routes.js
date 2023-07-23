@@ -6,9 +6,9 @@ import Dogs from "~/pages/Dogs";
 import ItemCats from "~/pages/ItemCats";
 import ItemDogs from "~/pages/ItemDogs";
 import News from "~/pages/News";
+import Info from "~/pages/Info";
 import Login from "~/pages/Login";
 import Register from "~/pages/Register";
-
 import Managers from "~/pages/Manager";
 import AddPet from "~/pages/Manager/AddPet";
 
@@ -24,6 +24,7 @@ const publicRoutes = [
     
     {path: config.routes.manager, component: Managers},
     {path: config.routes.addPet, component: AddPet},
+    {path: config.routes.info, component: Info},
 ];
 
 const privateRoutes = [];

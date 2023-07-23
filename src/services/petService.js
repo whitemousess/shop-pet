@@ -14,12 +14,3 @@ export const getPet = async ({ page, perPage,type }) => {
     console.log(error);
   };
 }
-
-export const postPet = async () => {
-  try {
-    const res = await httpRequest.post("pet/show");
-    return res.data;
-  } catch (error) {
-    console.log(error);
-  };
-}
