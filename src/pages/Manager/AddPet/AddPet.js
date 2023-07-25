@@ -8,9 +8,9 @@ const cx = classNames.bind(styles);
 
 function AddPet() {
   const [pet, setPet] = useState("");
+  const token = window.localStorage.token;
 
   useEffect(() => {
-    const token = window.localStorage.token;
     if (!token) {
       window.location = "/login";
       return;
@@ -25,6 +25,10 @@ function AddPet() {
         image: pet.image,
         type: pet.type,
         description: pet.description,
+      },{headers: {
+          "Content-Type": "application/json",
+          authorization: "Bearer " + token,
+        },
       })
       .then((response) => {
         window.location = "/manager/pets";
@@ -74,7 +78,9 @@ function AddPet() {
           value={pet.type || ""}
           name="type"
           className={cx("text-form")}
+          required
         >
+          <option value="">Chọn loại vật nuôi</option>
           <option value="dog">Chó cảnh</option>
           <option value="cat">Mèo cảnh</option>
         </select>

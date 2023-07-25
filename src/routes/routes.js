@@ -11,6 +11,7 @@ import Login from "~/pages/Login";
 import Register from "~/pages/Register";
 import Managers from "~/pages/Manager";
 import AddPet from "~/pages/Manager/AddPet";
+import EditPet from "~/pages/Manager/EditPet";
 
 const publicRoutes = [
     {path: config.routes.home, component: Home},
@@ -24,6 +25,7 @@ const publicRoutes = [
     
     {path: config.routes.manager, component: Managers},
     {path: config.routes.addPet, component: AddPet},
+    {path: config.routes.editPet, component: EditPet},
     {path: config.routes.info, component: Info},
 ];
 

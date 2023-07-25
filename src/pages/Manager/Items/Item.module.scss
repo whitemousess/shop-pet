@@ -1,24 +1,10 @@
+.manager {
+  display: flex;
+}
+.image-pet {
+  width: 200px;
+}
 
-.manager{
-    display: flex;
-  }
-  
-  table {
-    border-collapse: collapse;
-    word-wrap: break-word;
-   
-  
-    tr,
-    td,
-    th {
-      max-width: 1300px;
-      padding: 0px 20px;
-      border: 1px solid #ccc;
-    }
-  
-  }
-  
-  .image-pet{
-    width: 200px;
-  }
-  
+.ranger{
+  color: red !important;
+}

@@ -1,5 +1,5 @@
 const routes = {
-  info: "/:id",
+  info: "/pet/:id",
   home: "/",
   cats: "/cats",
   dogs: "/dogs",
@@ -9,6 +9,7 @@ const routes = {
   login: "/login",
   register: "/register",
   addPet: "/manager/add",
+  editPet: "/manager/edit/:id",
   manager: "/manager/pets",
 };
 

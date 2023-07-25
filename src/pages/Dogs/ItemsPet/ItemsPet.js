@@ -10,7 +10,7 @@ function Items({ data = [] }) {
     <div className={cx("wrapper")}>
       {data.map((dog) => (
         <PetInfo key={dog._id} data={dog}/>
-        )        )}
+        ))}
     </div>
   );
 }

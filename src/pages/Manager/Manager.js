@@ -1,17 +1,19 @@
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import classNames from "classnames/bind";
 
+import Items from "./Items";
+import config from "~/config";
+import Button from "~/components/Button";
 import styles from "./Manager.module.scss";
 import * as petService from "~/services/petService";
-import Items from "./Items";
 
 const cx = classNames.bind(styles);
 
 function Manager() {
   const [dog, setDog] = useState([]);
-  const page = 1;
+  const token = window.localStorage.token;
   useEffect(() => {
-    const token = window.localStorage.token;
     if (!token) {
       window.location = "/login";
       return;
@@ -19,17 +21,18 @@ function Manager() {
 
     // call Api User
     petService
-      .getPet({page, perPage: 5 , type: "dog" })
+      .getPet({ page: 1, perPage: 5 })
       .then((data) => {
-        setDog((prePet) => [...prePet, ...data]);
+        setDog((prePet) => [...prePet , ...data]);
       })
       .catch((error) => console.log(error));
   }, []);
 
-
   return (
     <div className={cx("wrapper")}>
-       <Items data={dog}/>
+            <input type="text" className={cx("search-manager")} placeholder="Tìm kiếm ..."/>
+      <Link to={config.routes.addPet}><Button blue>Thêm</Button></Link>
+      <Items data={dog} token={token}/>
     </div>
   );
 }
