@@ -13,6 +13,8 @@ const cx = classNames.bind(styles);
 function Manager() {
   const [dog, setDog] = useState([]);
   const token = window.localStorage.token;
+
+  const page = 1;
   useEffect(() => {
     if (!token) {
       window.location = "/login";
@@ -21,18 +23,26 @@ function Manager() {
 
     // call Api User
     petService
-      .getPet({ page: 1, perPage: 5 })
+      .getPet({ page, perPage: 5 })
       .then((data) => {
-        setDog((prePet) => [...prePet , ...data]);
+        setDog((prePet) => [...prePet, ...data]);
       })
       .catch((error) => console.log(error));
-  }, []);
+  }, [token]);
+
+
 
   return (
     <div className={cx("wrapper")}>
-            <input type="text" className={cx("search-manager")} placeholder="Tìm kiếm ..."/>
-      <Link to={config.routes.addPet}><Button blue>Thêm</Button></Link>
-      <Items data={dog} token={token}/>
+      <input
+        type="text"
+        className={cx("search-manager")}
+        placeholder="Tìm kiếm ..."
+      />
+      <Link to={config.routes.addPet}>
+        <Button blue>Thêm</Button>
+      </Link>
+      <Items data={dog} token={token} />
     </div>
   );
 }

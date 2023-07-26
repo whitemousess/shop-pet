@@ -26,6 +26,9 @@ function Header({ currentUser }) {
       <div tabIndex="-1" {...props}>
         <PopperWrapper>
           <p className={cx("headerMenu")}>{user.username}</p>
+          <Link className={cx("item")} to={config.routes.user}>
+            Thông tin cá nhân
+          </Link>
           <Link className={cx("item")} to={config.routes.manager}>
             Quản lý
           </Link>

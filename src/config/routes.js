@@ -1,6 +1,8 @@
 const routes = {
-  info: "/pet/:id",
   home: "/",
+  user: "/user/profile",
+  EditUser: "/user/profile/edit",
+  info: "/pet/:id",
   cats: "/cats",
   dogs: "/dogs",
   itemCats: "/itemcats",

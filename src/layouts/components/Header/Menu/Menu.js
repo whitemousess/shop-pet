@@ -28,6 +28,7 @@ function Menu() {
       <Tippy
         interactive
         delay={[0, 0]}
+        offset={[-20, 0]}
         render={renderMenuItem}
         placement={"bottom"}
       >

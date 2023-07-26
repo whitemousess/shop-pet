@@ -8,6 +8,8 @@ import ItemDogs from "~/pages/ItemDogs";
 import News from "~/pages/News";
 import Info from "~/pages/Info";
 import Login from "~/pages/Login";
+import User from "~/pages/User";
+import EditUser from "~/pages/User/EditUser";
 import Register from "~/pages/Register";
 import Managers from "~/pages/Manager";
 import AddPet from "~/pages/Manager/AddPet";
@@ -22,11 +24,13 @@ const publicRoutes = [
     {path: config.routes.news, component: News},
     {path: config.routes.login, component: Login , layout: null},
     {path: config.routes.register, component: Register , layout: null},
-    
+    {path: config.routes.user, component: User },
+    {path: config.routes.EditUser, component: EditUser },
+
+    {path: config.routes.info, component: Info},
     {path: config.routes.manager, component: Managers},
     {path: config.routes.addPet, component: AddPet},
     {path: config.routes.editPet, component: EditPet},
-    {path: config.routes.info, component: Info},
 ];
 
 const privateRoutes = [];

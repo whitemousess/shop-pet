@@ -1,15 +1,16 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import classNames from "classnames/bind";
-import styles from "./EditPet.module.scss";
+
+import styles from "./EditUser.module.scss";
 import Button from "~/components/Button";
+import * as userService from "~/services/userService";
 
 const cx = classNames.bind(styles);
 
-function EditPet() {
-  const token = window.localStorage.token;
-  const [pet, setPet] = useState("");
-  const endURL = window.location.href.split("/").pop();
+function EditUser() {
+    const [user , setUser] = useState({})
+    const token = window.localStorage.token;
 
   useEffect(() => {
     if (!token) {
@@ -17,30 +18,31 @@ function EditPet() {
       return;
     }
 
-    fetch(`http://localhost:1407/api/pet/show/${endURL}`)
-            .then((res) => res.json())
-            .then((res) => {
-              setPet(res.data)
-            })
-            .catch((error) => {console.log(error)});
+    userService
+          .getUser()
+          .then((data) => {
+            setUser(data);
+          })
+          .catch((error) => console.log(error));
   }, []);
 
   function submit(e) {
     e.preventDefault();
     axios
-      .put(`http://localhost:1407/api/pet/${endURL}/edit`, {
-        name: pet.name,
-        image: pet.image,
-        type: pet.type,
-        description: pet.description,
+      .put(`http://localhost:1407/api/account/current/edit`, {
+        email: user.email,
+        username: user.username,
+        avatar: user.avatar,
+        description: user.description,
       },
-      {headers: {
+      {
+        headers: {
         "Content-Type": "application/json",
         authorization: "Bearer " + token,
       },
     })
       .then((response) => {
-        window.location = "/manager/pets";
+        window.location = "/user/profile";
       })
       .catch((error) => {
         console.log(error);
@@ -48,9 +50,9 @@ function EditPet() {
   }
 
   function handle(e) {
-    const newData = { ...pet };
+    const newData = { ...user };
     newData[e.target.name] = e.target.value;
-    setPet(newData);
+    setUser(newData);
   }
 
   return (
@@ -61,15 +63,23 @@ function EditPet() {
           type="text"
           className={cx("text-form")}
           onChange={(e) => handle(e)}
-          value={pet.name || ""}
-          name="name"
-          placeholder="Nhập tên động vật ..."
+          value={user.email || ""}
+          name="email"
+          placeholder="Nhập email ..."
         />
         <input
           type="text"
           className={cx("text-form")}
           onChange={(e) => handle(e)}
-          value={pet.image || ""}
+          value={user.username || ""}
+          name="name"
+          placeholder="Nhập username ..."
+        />
+        <input
+          type="text"
+          className={cx("text-form")}
+          onChange={(e) => handle(e)}
+          value={user.avatar || ""}
           name="image"
           placeholder="Nhập địa chỉ ảnh ..."
         />
@@ -77,21 +87,11 @@ function EditPet() {
           type="text"
           className={cx("text-form")}
           onChange={(e) => handle(e)}
-          value={pet.description || ""}
+          value={user.description || ""}
           name="description"
           placeholder="Nhập mô tả ..."
         />
-        <select
-          onChange={(e) => handle(e)}
-          value={pet.type || ""}
-          name="type"
-          className={cx("text-form")}
-          required
-        >
-          <option value="">Chọn loại vật nuôi</option>
-          <option value="dog">Chó cảnh</option>
-          <option value="cat">Mèo cảnh</option>
-        </select>
+       
         <Button blue className={cx("btn-add")}>
           Sửa
         </Button>
@@ -100,4 +100,4 @@ function EditPet() {
   );
 }
 
-export default EditPet;
+export default EditUser;

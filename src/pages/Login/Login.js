@@ -1,6 +1,6 @@
 import axios from "axios";
 import classNames from "classnames/bind";
-import { useState , useEffect } from "react";
+import { useState, useEffect } from "react";
 
 import styles from "./Login.module.scss";
 import Button from "~/components/Button/Button";
@@ -12,15 +12,16 @@ const cx = classNames.bind(styles);
 
 function Login() {
   const [passwordShown, setPasswordShown] = useState(false);
-  const [username, setUsername] = useState("")
-  const [password, setPassword] = useState("")
+  const [error, setError] = useState(false);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   useEffect(() => {
-    const token = window.localStorage.token
+    const token = window.localStorage.token;
     if (token) {
-        window.location = '/'
+      window.location = "/";
     }
-  }, [])
+  }, []);
 
   const togglePassword = () => {
     setPasswordShown(!passwordShown);
@@ -48,15 +49,17 @@ function Login() {
         }
       })
       .catch((error) => {
-        console.log(error);
+        setError(error.response.data.message);
       });
-  }
-
+  };
 
   return (
     <div className={cx("wrapper")}>
       <div className={cx("container")}>
         <header className={cx("header")}>Đăng nhập</header>
+        {error ? (
+          <div className={cx("error-login")}>{error}</div>
+        ) : null}
         <p className={cx("title")}>Tài khoản</p>
         <div className={cx("form-group")}>
           <input
@@ -89,7 +92,7 @@ function Login() {
           Đăng nhập
         </Button>
         <span className={cx("btn-register")}>
-          <Link to={config.routes.register} >Chưa có tài khoản?</Link>
+          <Link to={config.routes.register}>Chưa có tài khoản?</Link>
         </span>
       </div>
     </div>
