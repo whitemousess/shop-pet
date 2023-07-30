@@ -1,5 +1,10 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import classNames from "classnames/bind";
+
+import styles from "./Info.module.scss"
+
+const cx = classNames.bind(styles)
 
 function Info() {
   const [info, setInfo] = useState(true);
@@ -19,9 +24,12 @@ function Info() {
   }, []);
 
   return (
-    <div>
-      <p>{info.name}</p>
-      <img src={info.image} alt={info.name} />
+    <div className={cx("wrapper")}>
+      <><img className={cx("image-pet")} src={info.image} alt={info.name} /></>
+      <div className={cx("content")}>
+        <h1 className={cx("header")}>{info.name}</h1>
+        <p className={cx("description")}>{info.description }</p>
+      </div>
     </div>
   );
 }

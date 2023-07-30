@@ -44,10 +44,6 @@
     background-color: transparent;
     font-family: var(--font-family);
   }
-
-  &:focus-within {
-    border-color: rgba(22, 24, 35, 0.2);
-  }
 }
 
 .btn-login {
@@ -56,6 +52,8 @@
 }
 
 .icon-show {
+  display: flex;
+  align-items: center;
   border: none;
   padding: 0px 10px;
   cursor: pointer;
@@ -73,4 +71,11 @@
   margin-top: 16px;
   font-size: 1.4rem;
   text-decoration: underline;
+}
+
+.input-login{
+  
+  &:focus{
+    outline: none;
+  }
 }

@@ -49,7 +49,8 @@ function Login() {
         }
       })
       .catch((error) => {
-        setError(error.response.data.message);
+        console.error(error);
+        setError("Tài khoản hoặc mật khẩu không chính xác");
       });
   };
 
@@ -84,9 +85,9 @@ function Login() {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-          <button className={cx("icon-show")} onClick={togglePassword}>
+          <span className={cx("icon-show")} onClick={togglePassword}>
             <EyePassword />
-          </button>
+          </span>
         </div>
         <Button blue className={cx("btn-login")} onClick={handleSubmit}>
           Đăng nhập

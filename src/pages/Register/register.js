@@ -1,6 +1,6 @@
 import axios from "axios";
 import classNames from "classnames/bind";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 import styles from "./Register.module.scss";
 import Button from "~/components/Button/Button";

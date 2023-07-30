@@ -1,19 +1,31 @@
-.wrapper{
-    text-align: center;
-    margin: 32px;
+.wrapper {
+  text-align: center;
+  margin: 32px;
 }
 
-.header{
-    margin: 14px 0;
+.header {
+  margin: 14px 0;
 }
 
-.avatar{
-    height: 700px;
-    width: 700px;
+.avatar {
+  height: 700px;
+  width: 700px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.username {
+  margin: 14px 00;
+}
+
+.modal-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  .modal-avatar {
+    height: 400px;
+    width: 400px;
     border-radius: 50%;
     object-fit: cover;
-}
-
-.username{
-    margin: 14px 00;
+  }
 }
