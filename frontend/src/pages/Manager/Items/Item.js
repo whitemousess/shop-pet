@@ -104,6 +104,6 @@ function Item({ data = [], token }) {
 export default Item;
 
 Item.propTypes = {
-  data: PropTypes.arrayOf,
+  data: PropTypes.array,
   token:  PropTypes.string,
 }

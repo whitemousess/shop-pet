@@ -51,9 +51,9 @@ export default Button;
 Button.propTypes = {
   to: PropTypes.string ,
   href: PropTypes.string ,
-  yellow: PropTypes.string ,
+  yellow: PropTypes.bool ,
   blue: PropTypes.bool ,
-  children: PropTypes.bool ,
+  children: PropTypes.node.isRequired,
   className: PropTypes.string ,
   leftIcon: PropTypes.node ,
   rightIcon: PropTypes.node ,
