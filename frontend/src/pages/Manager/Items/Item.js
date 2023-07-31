@@ -14,8 +14,8 @@ function Item({}) {
   const [show, setShow] = useState(false);
   const [deleteId, setDeleteId] = useState("");
   const [data, setData] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
+  const endURL = window.location.href.split("/").pop();
   const token = window.localStorage.token;
 
   const handleClose = () => setShow(false);
@@ -26,7 +26,7 @@ function Item({}) {
   };
 
   const handlePageChange = (pageNumber) => {
-    setCurrentPage(pageNumber);
+    window.location = `/manager/pets/${pageNumber}`
   };
 
   function deleteBtn(e) {
@@ -52,12 +52,12 @@ function Item({}) {
       return;
     }
     fetchData();
-  }, [currentPage]);
+  }, [token]);
 
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:1407/api/pet/show?page=${currentPage}`
+        `http://localhost:1407/api/pet/show?page=${endURL}`
       );
       setData(response.data.data);
       setTotalPages(response.data.totalPages);

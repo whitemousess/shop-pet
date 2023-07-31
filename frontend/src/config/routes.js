@@ -13,6 +13,7 @@ const routes = {
   addPet: "/manager/add",
   editPet: "/manager/edit/:id",
   manager: "/manager/pets",
+  managerPage: "/manager/pets/:page",
 };
 
 export default routes;
