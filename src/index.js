@@ -1,20 +1,25 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-// it's file name index.js 
- import App from '~/App';
-import reportWebVitals from './reportWebVitals';
-// it's style global
-import GlobalStyles from '~/components/GlobalStyles';
+const express = require('express');
+const bodyParser = require('body-parser')
+const cors = require('cors');
+const db = require('./config/db')
+const route = require('./routes');
+const cookieParser = require("cookie-parser");
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-    // <React.StrictMode>
-        // {/* it's style in ./src/component/global */}
-        <GlobalStyles>
-            {/* it's file name index.js */}
-            <App />
-        </GlobalStyles>,
-    // </React.StrictMode>,
+const app = express();
+const port = 1407;
+
+db.connect();
+
+app.use(cors());
+// for parsing application/json
+app.use(bodyParser.json()); 
+// for parsing application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true })); 
+// read token in cookie
+app.use(cookieParser());
+
+route(app);
+
+app.listen(port, () =>
+  console.log(`app listening at http://localhost:${port}`)
 );
-
-reportWebVitals();
