@@ -1,8 +1,7 @@
-import PropTypes from 'prop-types'
 import axios from "axios";
 import classNames from "classnames/bind";
 import "bootstrap/dist/css/bootstrap.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Modal } from "react-bootstrap";
 
 import styles from "./Item.module.scss";
@@ -11,15 +10,23 @@ import Image from "~/components/Image";
 
 const cx = classNames.bind(styles);
 
-function Item({ data = [], token }) {
+function Item({}) {
   const [show, setShow] = useState(false);
   const [deleteId, setDeleteId] = useState("");
+  const [data, setData] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
+  const token = window.localStorage.token;
 
   const handleClose = () => setShow(false);
 
   const handleClickId = (id) => {
     setDeleteId(id);
     setShow(true);
+  };
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
   };
 
   function deleteBtn(e) {
@@ -38,6 +45,26 @@ function Item({ data = [], token }) {
         console.log(error);
       });
   }
+
+  useEffect(() => {
+    if (!token) {
+      window.location = "/login";
+      return;
+    }
+    fetchData();
+  }, [currentPage]);
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(
+        `http://localhost:1407/api/pet/show?page=${currentPage}`
+      );
+      setData(response.data.data);
+      setTotalPages(response.data.totalPages);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <div>
@@ -80,6 +107,13 @@ function Item({ data = [], token }) {
               ))}
             </tbody>
           </table>
+          <div>
+            {Array.from({ length: totalPages }, (_, index) => (
+              <button className={cx("btn-page")} key={index} onClick={() => handlePageChange(index + 1)}>
+                {index + 1}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 
@@ -102,8 +136,3 @@ function Item({ data = [], token }) {
 }
 
 export default Item;
-
-Item.propTypes = {
-  data: PropTypes.array,
-  token:  PropTypes.string,
-}

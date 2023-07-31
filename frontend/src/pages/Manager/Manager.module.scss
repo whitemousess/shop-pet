@@ -1,22 +1,15 @@
 .wrapper {
+  text-align: center;
 }
 
-  table {
-    border-collapse: collapse;
-    word-wrap: break-word;
-   
-  
-    tr,
-    td,
-    th {
-      max-width: 1300px;
-      padding: 0px 20px;
-      border: 1px solid #ccc;
-    }
-  
-  }
-  
-  .image-pet{
-    width: 200px;
-  }
-  
+.search-manager{
+  width: 500px;
+  border: 1px solid var(--primary);
+  border-radius: 10px;
+  padding: 6px 16px;
+  outline: none;
+}
+
+.image-pet {
+  width: 200px;
+}
