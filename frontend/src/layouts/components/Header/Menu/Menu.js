@@ -36,7 +36,7 @@ function Menu() {
         offset={[-20, 0]}
         placement={"bottom"}
       >
-        <Link className={cx("link")} to={config.routes.itemdogs}>
+        <Link className={cx("link")} to={config.routes.itemDogs}>
           ĐỒ CHO CHÓ
         </Link>
       </Tippy>
@@ -46,18 +46,8 @@ function Menu() {
         offset={[-20, 0]}
         placement={"bottom"}
       >
-        <Link className={cx("link")} to={config.routes.itemcats}>
+        <Link className={cx("link")} to={config.routes.itemCats}>
           ĐỒ CHO MÈO
-        </Link>
-      </Tippy>
-      <Tippy
-        interactive
-        delay={[0, 0]}
-        offset={[-20, 0]}
-        placement={"bottom"}
-      >
-        <Link className={cx("link")} to={config.routes.news}>
-          TIN TỨC
         </Link>
       </Tippy>
     </div>

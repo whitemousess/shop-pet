@@ -104,8 +104,10 @@ function EditPet() {
           required
         >
           <option value="">Chọn loại vật nuôi</option>
-          <option value="dog">Chó cảnh</option>
-          <option value="cat">Mèo cảnh</option>
+          <option value="dogs">Chó cảnh</option>
+          <option value="cats">Mèo cảnh</option>
+          <option value="itemCat">Đồ dùng cho mèo</option>
+          <option value="itemDog">Đồ dùng cho chó</option>
         </select>
         <Button blue className={cx("btn-add")}>
           Sửa

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import classNames from "classnames/bind";
-import { Link } from "react-router-dom";
+import { Link} from "react-router-dom";
 import { useEffect, useState } from "react";
 import Tippy from "@tippyjs/react/headless";
 
@@ -19,8 +19,8 @@ function Header({ currentUser }) {
   const [user, setUser] = useState([]);
 
   function logout() {
-    window.localStorage.clear();
-    window.location.reload();
+    localStorage.removeItem('token');
+    window.location.href = '/';
   }
 
   const renderMenuItem = (props) => {

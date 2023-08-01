@@ -81,9 +81,9 @@ function Register() {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-          <button className={cx("icon-show")} onClick={togglePassword}>
+          <span className={cx("icon-show")} onClick={togglePassword}>
             <EyePassword />
-          </button>
+          </span>
         </div>
 
         <p className={cx("title")}>Nhập lại mật khẩu</p>
@@ -96,9 +96,9 @@ function Register() {
             onChange={(e) => setRePassword(e.target.value)}
             required
           />
-          <button className={cx("icon-show")} onClick={togglePassword}>
+          <span className={cx("icon-show")} onClick={togglePassword}>
             <EyePassword />
-          </button>
+          </span>
         </div>
 
         <p className={cx("title")}>Email</p>

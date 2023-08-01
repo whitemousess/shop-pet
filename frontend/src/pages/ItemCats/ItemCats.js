@@ -8,7 +8,7 @@ import config from "~/config";
 
 const cx = classNames.bind(styles);
 
-function Dogs() {
+function ItemCats() {
   const [cat, setCat] = useState([]);
   const [totalPages, setTotalPages] = useState(0);
   const endURL = window.location.href.split("/").pop();
@@ -17,14 +17,13 @@ function Dogs() {
   const page = params.get("page");
 
   const handlePageChange = (pageNumber) => {
-    window.location = `/cats?page=${pageNumber}`;
+    window.location = `/itemdogs?page=${pageNumber}`;
   };
-
 
   useEffect(() => {
     // call Api User
     petSevice
-      .getPet({ page: page, perPage: 8, type: "cats" })
+      .getPet({ page: page, perPage: 8, type: "itemCat" })
       .then((data) => {
         setCat((prePet) => [...prePet, ...data.data]);
         setTotalPages(data.totalPages);
@@ -36,13 +35,15 @@ function Dogs() {
     <div className={cx("wrapper")}>
       <div className={cx("title")}>
         <span></span>
-        <strong className={cx("title-dog")}>MÈO CẢNH</strong>
+        <strong className={cx("title-dog")}>Đồ dùng cho mèo</strong>
         <span></span>
       </div>
       <div className={cx("description")}>
         <span>
-          Mèo cảnh thuần chủng được nhập khẩu & nhân giống tại trại mèo Dogily
-          Cattery thành viên Hiệp hội mèo thế giới TICA.
+          Đồ dùng cho mèo căn bản là những món mà người nuôi ai cũng phải sở
+          hữu.Trước khi nuôi bất kỳ loài mèo nào, bạn cần phải có một số thứ cần
+          thiết để hỗ trợ cho sự phát triển toàn diện của chúng. Nếu lần đầu bạn
+          nuôi cún thì đây có thể là một bài viết hữu ích đấy!
         </span>
       </div>
       <ItemsPet data={cat} />
@@ -60,7 +61,7 @@ function Dogs() {
             ))}
           </div>
         ) : (
-          <Link className={cx("btn-more")} to={config.routes.cats}>
+          <Link className={cx("btn-more")} to={config.routes.itemCats}>
             Xem thêm
           </Link>
         )}
@@ -69,4 +70,4 @@ function Dogs() {
   );
 }
 
-export default Dogs;
+export default ItemCats;

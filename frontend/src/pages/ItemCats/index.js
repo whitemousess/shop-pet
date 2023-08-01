@@ -1,1 +1,1 @@
-export {default} from './ItemCatz'
+export {default} from './ItemCats'

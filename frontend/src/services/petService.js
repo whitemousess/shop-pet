@@ -1,15 +1,33 @@
 import * as httpRequest from "~/utils/httprequest";
 
-export const getPet = async ({ page, type }) => {
+const token = window.localStorage.token;
+
+export const getPet = async ({ page , perPage , type ,q }) => {
   try {
     const res = await httpRequest.get("pet/show", {
       params: {
         page,
-        type
+        per_page: perPage,
+        type,
+        q
       }
     });
-    return res.data;
+    return res;
   } catch (error) {
     console.log(error);
   }
 };
+
+export const petDelete = async ({deleteID}) => {
+  try {
+    const res = await httpRequest.deleteData(`pet/${deleteID}/delete`, 
+    {
+      headers: {
+        authorization: "Bearer " + token,
+      }
+    })
+    return res;
+  } catch (error) {
+    console.log(error);
+  }
+}

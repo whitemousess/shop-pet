@@ -29,7 +29,7 @@ function Info() {
       <><Image className={cx("image-pet")} src={info.image} alt={info.name} /></>
       <div className={cx("content")}>
         <h1 className={cx("header")}>{info.name}</h1>
-        <p className={cx("description")}>{info.description }</p>
+        <p className={cx("description")}>{info.description}</p>
       </div>
     </div>
   );

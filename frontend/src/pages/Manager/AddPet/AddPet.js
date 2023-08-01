@@ -27,13 +27,13 @@ function AddPet() {
     formData.append("type", pet.type);
     formData.append("description", pet.description);
 
-    await axios.post("http://localhost:1407/api/pet/add", 
-    formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-        authorization: "Bearer " + token,
-      },
-    })
+    await axios
+      .post("http://localhost:1407/api/pet/add", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          authorization: "Bearer " + token,
+        },
+      })
 
       .then((response) => {
         window.location = "/manager/pets";
@@ -41,7 +41,7 @@ function AddPet() {
       .catch((error) => {
         console.log(error);
       });
-  }
+  };
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
@@ -69,7 +69,7 @@ function AddPet() {
           <img src={image.preview} alt="error-pet" className={cx("image")} />
         )}
 
-          <p>Ảnh vật nuôi</p>
+        <p>Ảnh vật nuôi</p>
         <input type="file" name="image" onChange={handleFileChange}></input>
 
         <input
@@ -96,8 +96,10 @@ function AddPet() {
           required
         >
           <option value="">Chọn loại vật nuôi</option>
-          <option value="dog">Chó cảnh</option>
-          <option value="cat">Mèo cảnh</option>
+          <option value="dogs">Chó cảnh</option>
+          <option value="cats">Mèo cảnh</option>
+          <option value="itemCat">Đồ dùng cho mèo</option>
+          <option value="itemDog">Đồ dùng cho chó</option>
         </select>
         <Button blue className={cx("btn-add")}>
           Thêm

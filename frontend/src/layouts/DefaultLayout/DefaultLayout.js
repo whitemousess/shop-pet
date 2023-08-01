@@ -8,8 +8,7 @@ import Footer from "~/layouts/components/Footer";
 
 const cx = classNames.bind(styles);
 
-function DefaultLayout({ children  }) {
-  
+function DefaultLayout({ children }) {
   const [currentUser, setCurrentUser] = useState();
 
   useEffect(() => {

@@ -1,4 +1,3 @@
-import axios from "axios";
 import classNames from "classnames/bind";
 import "bootstrap/dist/css/bootstrap.css";
 import { useState, useEffect } from "react";
@@ -7,6 +6,7 @@ import { Modal } from "react-bootstrap";
 import styles from "./Item.module.scss";
 import Button from "~/components/Button";
 import Image from "~/components/Image";
+import * as petService from "~/services/petService";
 
 const cx = classNames.bind(styles);
 
@@ -15,7 +15,11 @@ function Item({}) {
   const [deleteId, setDeleteId] = useState("");
   const [data, setData] = useState([]);
   const [totalPages, setTotalPages] = useState(0);
-  const endURL = window.location.href.split("/").pop();
+  const params = new URLSearchParams(window.location.search);
+  // get params from url
+  const keyword = params.get('q');
+  const page = params.get('page');
+
   const token = window.localStorage.token;
 
   const handleClose = () => setShow(false);
@@ -26,18 +30,14 @@ function Item({}) {
   };
 
   const handlePageChange = (pageNumber) => {
-    window.location = `/manager/pets/${pageNumber}`
+    if(keyword) {window.location = `/manager/pets?page=${pageNumber}&q=${keyword}`;}
+    else window.location = `/manager/pets?page=${pageNumber}`;
   };
 
   function deleteBtn(e) {
     e.preventDefault();
-    axios
-      .delete(`http://localhost:1407/api/pet/${deleteId}/delete`, {
-        headers: {
-          "Content-Type": "application/json",
-          authorization: "Bearer " + token,
-        },
-      })
+    petService
+    .petDelete({deleteID: deleteId})
       .then((response) => {
         window.location = "/manager/pets";
       })
@@ -51,20 +51,15 @@ function Item({}) {
       window.location = "/login";
       return;
     }
-    fetchData();
-  }, [token]);
 
-  const fetchData = async () => {
-    try {
-      const response = await axios.get(
-        `http://localhost:1407/api/pet/show?page=${endURL}`
-      );
-      setData(response.data.data);
-      setTotalPages(response.data.totalPages);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+    petService
+    .getPet({page:page || 1, perPage: 5 ,q : keyword})
+    .then((data) => {
+      setData((prePet) => [...prePet, ...data.data]);
+      setTotalPages(data.totalPages);
+    })
+    .catch((error) => console.log(error));
+  }, [token]);
 
   return (
     <div>
