@@ -19,6 +19,8 @@ function EditUser() {
   const token = window.localStorage.token;
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+
     if (!token) {
       window.location = "/login";
       return;
@@ -81,7 +83,7 @@ function EditUser() {
   return (
     <div className={cx("wrapper")}>
       <div className={cx("form-manager")}>
-        <h1 className={cx("header")}>Thông tin cá nhân</h1>
+        <h1 className={cx("header")}>Thông tin cá nhân của {user.username}</h1>
         {image.preview && (
           <Image src={image.preview} alt="avatar" className={cx("avatar")} />
         )}
@@ -96,15 +98,6 @@ function EditUser() {
           value={user.email || ""}
           name="email"
           placeholder="Nhập email ..."
-        />
-
-        <input
-          type="text"
-          className={cx("text-form")}
-          onChange={(e) => handle(e)}
-          value={user.username || ""}
-          name="username"
-          placeholder="Nhập username ..."
         />
 
         <input

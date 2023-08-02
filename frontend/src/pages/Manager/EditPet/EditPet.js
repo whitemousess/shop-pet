@@ -112,6 +112,9 @@ function EditPet() {
         <Button blue className={cx("btn-add")}>
           Sửa
         </Button>
+        <Button yellow onClick={(e) => window.history.back()} className={cx("btn-add")}>
+          Hủy
+        </Button>
       </form>
     </div>
   );

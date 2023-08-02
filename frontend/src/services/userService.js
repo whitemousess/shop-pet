@@ -14,22 +14,14 @@ export const getUser = async () => {
   }
 };
 
-export const putUser = async ({avatar, email, username, password}) => {
-  try {
-    let formData = new FormData();
-    formData.append("avatar", avatar);
-    formData.append("email", email);
-    formData.append("username", username);
-    formData.append("password", password);
-
-    const res = await httpRequest.put("account/current/edit", formData, {
-      headers: {
-        "Content-Type": "multipart/form-data",
-        authorization: "Bearer " + token,
-      },
-    });
-    return res;
-  } catch (error) {
-    console.log(error);
-  }
+export const postUser = async ({ username, password, email }) => {
+    const res = await httpRequest.post(
+      "account/register",
+      { username, password, email },
+      {
+        headers: {
+          authorization: "Bearer " + token,
+        },
+      }
+    );
 };

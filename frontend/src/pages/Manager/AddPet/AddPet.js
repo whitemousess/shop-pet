@@ -79,6 +79,7 @@ function AddPet() {
           value={pet.name || ""}
           name="name"
           placeholder="Nhập tên động vật ..."
+          required
         />
         <input
           type="text"
@@ -87,6 +88,7 @@ function AddPet() {
           value={pet.description || ""}
           name="description"
           placeholder="Nhập mô tả ..."
+          required
         />
         <select
           onChange={(e) => handle(e)}
@@ -103,6 +105,9 @@ function AddPet() {
         </select>
         <Button blue className={cx("btn-add")}>
           Thêm
+        </Button>
+        <Button yellow onClick={(e) => window.history.back()} className={cx("btn-add")}>
+          Hủy
         </Button>
       </form>
     </div>

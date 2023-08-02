@@ -14,7 +14,7 @@ export const deleteData = async (path, option = {}) => {
   console.log(response)
 };
 
-  export const put = async (path, option = {}) => {
-    const response = await httpRequest.put(path, option);
+  export const post = async (path, option = {}) => {
+    const response = await httpRequest.post(path, option);
     console.log(response)
   };

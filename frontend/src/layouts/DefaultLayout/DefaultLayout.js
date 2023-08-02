@@ -13,6 +13,7 @@ function DefaultLayout({ children }) {
 
   useEffect(() => {
     const token = window.localStorage.token
+    
     if (token) {
         setCurrentUser(true)
     }else{

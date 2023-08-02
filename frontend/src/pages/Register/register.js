@@ -1,12 +1,12 @@
-import axios from "axios";
 import classNames from "classnames/bind";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 import styles from "./Register.module.scss";
 import Button from "~/components/Button/Button";
 import { EyePassword } from "~/components/Icons";
-import { Link } from "react-router-dom";
 import config from "~/config";
+import * as userService from "~/services/userService";
 
 const cx = classNames.bind(styles);
 
@@ -25,22 +25,10 @@ function Register() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if(password === rePassword) {
-      axios
-      .post(
-        `http://localhost:1407/api/account/register`,
-        {
-          username,
-          password,
-          email
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      )
+      userService
+      .postUser({username: username, password: password, email: email})
       .then((res) => {
-          window.location = "/login";
+        window.location = "/login";
       })
       .catch((error) => {
         setError(error.response.data.message);
@@ -52,7 +40,7 @@ function Register() {
 
   return (
     <div className={cx("wrapper")}>
-      <div className={cx("container")}>
+      <form className={cx("container")} onSubmit={(e) => handleSubmit(e)}>
         <header className={cx("header")}>Đăng ký</header>
 
         {error ? (
@@ -113,14 +101,14 @@ function Register() {
           />
         </div>
 
-        <Button blue onClick={handleSubmit} className={cx("btn-login")}>
+        <Button blue className={cx("btn-login")}>
           Đăng ký
         </Button>
 
         <span className={cx("login")}>
           <Link to={config.routes.login}>Đã có tài khoản</Link>
         </span>
-      </div>
+      </form>
     </div>
   );
 }

@@ -10,14 +10,17 @@ import Button from "~/components/Button/Button";
 const cx = classNames.bind(styles)
 
 function User() {
-    const [user , setUser] = useState({})
+    const [user , setUser] = useState({});
     const token = window.localStorage.token;
 
     useEffect(() => {
+      window.scrollTo(0, 0);
+  
       if (!token) {
         window.location = "/login";
         return;
       }
+      
         // call Api User
         userService
           .getUser()
