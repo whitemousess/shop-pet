@@ -13,7 +13,6 @@ const routes = {
   itemDogs: "/itemdogs",
 
   login: "/login",
-  register: "/register",
 
   addPet: "/manager/add",
   editPet: "/manager/edit/:id",

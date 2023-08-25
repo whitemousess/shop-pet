@@ -85,9 +85,6 @@ function Header({ currentUser }) {
               <Link to={config.routes.login} className={cx("login")}>
                 <Button yellow>Login</Button>
               </Link>
-              <Link to={config.routes.register}>
-                <Button blue>Register</Button>
-              </Link>
             </>
           )}
         </div>
