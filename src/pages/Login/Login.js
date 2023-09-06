@@ -31,7 +31,7 @@ function Login() {
     e.preventDefault();
     axios
       .post(
-        `http://localhost:1407/api/account/login`,
+        `${process.env.REACT_APP_BASE_URL}account/login`,
         {
           username,
           password,

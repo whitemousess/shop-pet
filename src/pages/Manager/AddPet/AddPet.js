@@ -28,7 +28,7 @@ function AddPet() {
     formData.append("description", pet.description);
 
     await axios
-      .post("http://localhost:1407/api/pet/add", formData, {
+      .post(`${process.env.REACT_APP_BASE_URL}pet/add`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
           authorization: "Bearer " + token,

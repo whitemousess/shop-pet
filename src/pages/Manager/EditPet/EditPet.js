@@ -18,7 +18,7 @@ function EditPet() {
       return;
     }
 
-    fetch(`http://localhost:1407/api/pet/show/${endURL}`)
+    fetch(`${process.env.REACT_APP_BASE_URL}pet/show/${endURL}`)
             .then((res) => res.json())
             .then((res) => {
               setPet(res.data)
@@ -35,7 +35,7 @@ function EditPet() {
     formData.append("type", pet.type);
     formData.append("description", pet.description);
 
-    await axios.put(`http://localhost:1407/api/pet/${endURL}/edit`, 
+    await axios.put(`${process.env.REACT_APP_BASE_URL}pet/${endURL}/edit`, 
     formData, {
       headers: {
         'Content-Type': 'multipart/form-data',

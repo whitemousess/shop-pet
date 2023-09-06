@@ -29,6 +29,7 @@ function Item({}) {
     setShow(true);
   };
 
+
   const handlePageChange = (pageNumber) => {
     if(keyword) {window.location = `/manager/pets?page=${pageNumber}&q=${keyword}`;}
     else window.location = `/manager/pets?page=${pageNumber}`;

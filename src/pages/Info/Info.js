@@ -14,7 +14,7 @@ function Info() {
   const url = window.location.href.split("/").pop();
   
   useEffect(() => {
-    fetch(`http://localhost:1407/api/pet/show/${url}`)
+    fetch(`${process.env.REACT_APP_BASE_URL}pet/show/${url}`)
       .then((res) => res.json())
       .then((res) => {
         setInfo(res.data);

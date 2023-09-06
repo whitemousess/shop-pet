@@ -44,7 +44,7 @@ function EditUser() {
       formData.append("username", user.username);
       formData.append("password", user.password);
       await axios
-        .put("http://localhost:1407/api/account/current/edit", formData, {
+        .put(`${process.env.REACT_APP_BASE_URL}account/current/edit`, formData, {
           headers: {
             "Content-Type": "multipart/form-data",
             authorization: "Bearer " + token,

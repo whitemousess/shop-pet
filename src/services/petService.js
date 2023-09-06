@@ -26,7 +26,6 @@ export const petDelete = async ({deleteID}) => {
         authorization: "Bearer " + token,
       }
     })
-    return res;
   } catch (error) {
     console.log(error);
   }
