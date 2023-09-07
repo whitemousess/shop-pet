@@ -10,6 +10,24 @@
   --font-family: "Quicksand", sans-serif;
 }
 
+@mixin mobile {
+  @media screen and (max-width: 768px) {
+    @content
+  }
+};
+
+@mixin tablet {
+  @media screen and (min-width: 769px) and (max-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin mobileTablet {
+  @media screen and (max-width: 1024px) {
+    @content;
+  }
+}
+
 // scrollbar CSS
 
 ::-webkit-scrollbar {
@@ -51,6 +69,6 @@ a {
   cursor: pointer;
 }
 
-input{
+input {
   border: none;
 }

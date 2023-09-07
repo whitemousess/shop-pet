@@ -1,3 +1,5 @@
+@import "../../../components/GlobalStyles/GlobalStyles.scss";
+
 .wrapper{
     display: flex;
     justify-content: center;
@@ -5,6 +7,10 @@
     flex-wrap: wrap;
     padding: 16px 0 30px;
     margin: 0 16%;
+
+    @include tablet{
+        margin: 0;
+    }
 }
 
 .Item{

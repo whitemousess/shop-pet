@@ -1,10 +1,20 @@
+@import "../../../components/GlobalStyles/GlobalStyles.scss";
+
 .wrapper {
+  @include mobile {
+    display: none;
+  }
 }
+
 
 .search,
 .search-result {
   display: inline-flex;
   width: 500px;
+
+  @include tablet {
+    width: 350px;
+  }
 }
 
 .search-input {

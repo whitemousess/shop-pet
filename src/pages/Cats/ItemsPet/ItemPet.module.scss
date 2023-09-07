@@ -1,22 +1,28 @@
-.wrapper{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    padding: 16px 0 30px;
-    margin: 0 16%;
+@import "../../../components/GlobalStyles/GlobalStyles.scss";
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 16px 0 30px;
+  margin: 0 16%;
+
+  @include tablet {
+    margin: 0;
+  }
 }
 
-.Item{
-    padding: 20px 10px;
+.Item {
+  padding: 20px 10px;
 }
 
-.img-pet{
-    width: 260px;
-    height: 260px;
-    border-radius: 18px;
+.img-pet {
+  width: 260px;
+  height: 260px;
+  border-radius: 18px;
 }
 
-.label{
-    text-align: center;
+.label {
+  text-align: center;
 }
