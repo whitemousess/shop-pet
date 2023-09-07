@@ -26,17 +26,17 @@ function Header({ currentUser }) {
   const renderMenuItem = (props) => {
     return (
       <div tabIndex="-1" {...props}>
-        <PopperWrapper>
-          <p className={cx("headerMenu")}>{user.username}</p>
-          <Link className={cx("item")} to={config.routes.user}>
-            Thông tin cá nhân
-          </Link>
-          <Link className={cx("item")} to={config.routes.manager}>
-            Quản lý
-          </Link>
-          <Link className={cx("item")} onClick={logout}>
-            Đăng xuất
-          </Link>
+        <PopperWrapper >
+            <p className={cx("headerMenu")}>{user.username}</p>
+            <Link className={cx("item")} to={config.routes.user}>
+              Thông tin cá nhân
+            </Link>
+            <Link className={cx("item")} to={config.routes.manager}>
+              Quản lý
+            </Link>
+            <Link className={cx("item")} onClick={logout}>
+              Đăng xuất
+            </Link>
         </PopperWrapper>
       </div>
     );
@@ -76,6 +76,16 @@ function Header({ currentUser }) {
                 hideOnClick={true}
                 trigger= {"click"}
                 placement={"bottom"}
+                popperOptions={{
+                  modifiers: [
+                    {
+                      name: 'offset',
+                      options: {
+                        offset: [-40, 0], // Điều chỉnh giá trị "-20px" để di chuyển sang trái
+                      },
+                    },
+                  ],
+                }}
               >
                 <Image className={cx("avatar")} src={user.avatar} alt="avatar" />
               </Tippy>
