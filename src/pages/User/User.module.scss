@@ -1,3 +1,5 @@
+@import "../../components/GlobalStyles/GlobalStyles.scss";
+
 .wrapper {
   text-align: center;
   margin: 32px;
@@ -12,6 +14,12 @@
   width: 700px;
   border-radius: 50%;
   object-fit: cover;
+
+  @include mobile {
+    width: 350px;
+    height: 100%;
+    object-fit: cover;
+  }
 }
 
 .username {
@@ -19,9 +27,9 @@
 }
 
 .modal-body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   .modal-avatar {
     height: 400px;
     width: 400px;
