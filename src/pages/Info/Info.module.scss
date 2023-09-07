@@ -1,16 +1,24 @@
-.wrapper{
-    margin: 10px 24px;
+@import "../../components/GlobalStyles/GlobalStyles.scss";
+
+.wrapper {
+    display: flex;
+  margin: 10px 24px;
 }
 
-.image-pet{
+.image-pet {
+  width: 50%;
+  object-fit: cover;
+
+  @include mobileTablet {
     width: 100%;
-    object-fit: cover;
+  }
 }
 
-.content{
+.content {
+    width: 50%;
+    margin: 0 10px;
 }
 
-.header{
-font-size: 3.2rem;
+.header {
+  font-size: 3.2rem;
 }
-
