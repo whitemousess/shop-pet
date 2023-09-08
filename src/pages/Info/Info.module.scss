@@ -1,22 +1,30 @@
 @import "../../components/GlobalStyles/GlobalStyles.scss";
 
 .wrapper {
-    display: flex;
+  display: flex;
   margin: 10px 24px;
+
+  @include mobile {
+    display: block;
+  }
 }
 
 .image-pet {
   width: 50%;
   object-fit: cover;
 
-  @include mobileTablet {
+  @include mobile {
     width: 100%;
   }
 }
 
 .content {
-    width: 50%;
-    margin: 0 10px;
+  width: 50%;
+  margin: 0 10px;
+
+  @include mobile {
+    width: 100%;
+  }
 }
 
 .header {
