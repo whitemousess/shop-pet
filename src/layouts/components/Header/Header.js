@@ -1,6 +1,6 @@
-import PropTypes from 'prop-types'
+import PropTypes from "prop-types";
 import classNames from "classnames/bind";
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Tippy from "@tippyjs/react/headless";
 
@@ -19,24 +19,24 @@ function Header({ currentUser }) {
   const [user, setUser] = useState([]);
 
   function logout() {
-    localStorage.removeItem('token');
-    window.location.href = '/';
+    localStorage.removeItem("token");
+    window.location.href = "/";
   }
 
   const renderMenuItem = (props) => {
     return (
       <div tabIndex="-1" {...props}>
-        <PopperWrapper >
-            <p className={cx("headerMenu")}>{user.username}</p>
-            <Link className={cx("item")} to={config.routes.user}>
-              Thông tin cá nhân
-            </Link>
-            <Link className={cx("item")} to={config.routes.manager}>
-              Quản lý
-            </Link>
-            <Link className={cx("item")} onClick={logout}>
-              Đăng xuất
-            </Link>
+        <PopperWrapper>
+          <p className={cx("headerMenu")}>{user.username}</p>
+          <Link className={cx("item")} to={config.routes.user}>
+            Thông tin cá nhân
+          </Link>
+          <Link className={cx("item")} to={config.routes.manager}>
+            Quản lý
+          </Link>
+          <Link className={cx("item")} onClick={logout}>
+            Đăng xuất
+          </Link>
         </PopperWrapper>
       </div>
     );
@@ -74,12 +74,12 @@ function Header({ currentUser }) {
                 interactive
                 render={renderMenuItem}
                 hideOnClick={true}
-                trigger= {"click"}
+                trigger={"click"}
                 placement={"bottom"}
                 popperOptions={{
                   modifiers: [
                     {
-                      name: 'offset',
+                      name: "offset",
                       options: {
                         offset: [-40, 0], // Điều chỉnh giá trị "-20px" để di chuyển sang trái
                       },
@@ -87,7 +87,11 @@ function Header({ currentUser }) {
                   ],
                 }}
               >
-                <Image className={cx("avatar")} src={user.avatar} alt="avatar" />
+                <Image
+                  className={cx("avatar")}
+                  src={user.avatar}
+                  alt="avatar"
+                />
               </Tippy>
             </>
           ) : (
@@ -108,5 +112,5 @@ function Header({ currentUser }) {
 export default Header;
 
 Header.propTypes = {
-  currentUser : PropTypes.bool,
-}
+  currentUser: PropTypes.bool,
+};
